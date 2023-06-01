@@ -108,7 +108,6 @@ Components:
   title: { type: String },
   description: { type: String },
   image: { type: String },
-  services: [{ type: Schema.Types.ObjectId, ref: 'Service' }]
   poster: {type: Schema.Types.ObjectId, ref: 'User', required: [true, "Poster is required."]},
 
 }
