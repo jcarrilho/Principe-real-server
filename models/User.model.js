@@ -9,7 +9,7 @@ const userSchema = new Schema(
     phoneNumber: { type: Number, required: true },
     email: { type: String, required: true, unique: true },
     role: { type: String, enum: ['poster', 'admin'], default: 'poster' },
-    service: [{type: Schema.Types.ObjectId, ref: 'Service'}]
+    service: [{ type: Schema.Types.ObjectId, ref: 'Service' }]
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
