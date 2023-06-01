@@ -1,4 +1,4 @@
-# Príncipe + Real
+# Principe + Real
 
 <br>
 
@@ -83,49 +83,34 @@ Components:
   phoneNumber: { type: Number, required: true },
   email: { type: String, required: true, unique: true },
   role: { type: String, enum: ['poster', 'admin'], default: 'poster' },
-  service: [{type: Schema.Types.ObjectId, ref: 'Service'}]}
+  service: [{type: Schema.Types.ObjectId, ref: 'Service'}]
+}
 ```
-
-````
 
 **Service model**
 
 ```javascript
 {
-    title: {
-      type: String,
-      required: [true, "Title is required."],
-    },
-    description: {
-      type: String,
-      required: [true, "Description is required."],
-    },
-    contactNumber: {
-      type: String,
-      required: [true, "Contact number is required."],
-    },
-    poster: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-      required: [true, "Poster is required."],
-    },
-    status: {
-      type: String,
-      enum: ['pending', 'approved', 'rejected'],
-      default: 'pending'
-    }
-}
-````
+    title: { type: String, required: [true, "Title is required."]},
+    description: {type: String, required: [true, "Description is required."]},
+    contactNumber: { type: String, required: [true, "Contact number is required."]},
+    image: { type: String },
+    poster: {type: Schema.Types.ObjectId, ref: 'User', required: [true, "Poster is required."]},
+    status: { type: String, enum: ['pending', 'approved', 'rejected'] default: 'pending' }
 
-**Market model**
+}
+```
+
+**News model**
 
 ```javascript
 {
-  name: { type: String },
-  adress: { type: String },
-  brand: { type: String },
-  description: {},
+  title: { type: String },
+  description: { type: String },
+  image: { type: String },
   services: [{ type: Schema.Types.ObjectId, ref: 'Service' }]
+  poster: {type: Schema.Types.ObjectId, ref: 'User', required: [true, "Poster is required."]},
+
 }
 ```
 
@@ -138,20 +123,20 @@ Components:
 | HTTP Method | URL                    | Request Body                 | Success status | Error Status | Description                                                                                                                     |
 | ----------- | ---------------------- | ---------------------------- | -------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------- |
 | POST        | `/auth/signup`         | {name, email, password}      | 201            | 404          | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
-| POST        | `/auth/login`          | {email, password}         | 200            | 401          | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session              |
-| GET        | `/auth/verify`         |                              | 200            | 400          | verify if the user is logged in                                                                                                               |
-| GET        | `/auth/updateToken`         |                              | 200            | 400          | get user token updated                                                                                                               |
+| POST        | `/auth/login`          | {email, password}            | 200            | 401          | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session              |
+| GET         | `/auth/verify`         |                              | 200            | 400          | verify if the user is logged in                                                                                                               |
+| GET         | `/auth/updateToken`    |                              | 200            | 400          | get user token updated                                                                                                               |
 | GET         | `/api/profile/:id`     |                              |                |              | show specific profile                                                                                                            |
-| PUT         | `/api/profile/:id`     | { firstName, lastName, email, phoneNumber }                | 201            | 400          | edit profile                                                                                                                     |
-| DELETE      | `/api/profile/:id`     |                              | 200            | 400          | delete profile                                                                                                                   |
-| POST         | `/service`           |                              | 201            | 400          | create new service                                                                                                                      |
-| GET         | `/service`           |                              | 201            | 400          | read service                                                                                                                      |
-| GET         | `/service/:id`           |                              | 201            | 400          | read one service                                                                                                                      |
-| PUT         | `/service/:id`           |                              | 201            | 400          | update service                                                                                                                      |
-| DELETE         | `/service/:id`           |                              | 201            | 400          | delete basket                                                                                                                      |
-| POST         | `/neighborhood`           |                              | 201            | 400          | create new service                                                                                                                      |
-| GET         | `/neighborhood`           |                              | 201            | 400          | read service                                                                                                                      |
-| GET         | `/neighborhood/:id`           |                              | 201            | 400          | read one service                                                                                                                      |
+| PUT         | `/api/profile/:id`     | { firstName, lastName, email, phoneNumber }   | 201          | 400                 | edit profile                                                                                                                     |
+| DELETE      | `/api/profile/:id`     |                              | 200            | 400          | delete profile                                                                                                                     |
+| POST        | `/service`             |                              | 201            | 400          | create new service                                                                                                                      |
+| GET         | `/service`             |                              | 201            | 400          | read service                                                                                                                      |
+| GET         | `/service/:id`         |                              | 201            | 400          | read one service                                                                                                                      |
+| PUT         | `/service/:id`         |                              | 201            | 400          | update service                                                                                                                      |
+| DELETE      | `/service/:id`         |                              | 201            | 400          | delete basket                                                                                                                       |
+| POST        | `/neighborhood`        |                              | 201            | 400          | create new service                                                                                                                      |
+| GET         | `/neighborhood`        |                              | 201            | 400          | read service                                                                                                                      |
+| GET         | `/neighborhood/:id`    |                              | 201            | 400          | read one service                                                                                                                      |
 <br>
 
 ## API's
