@@ -71,7 +71,7 @@ router.put('/services/:serviceId/accept', /* isAdmin, */ async (req, res) => {
 })
 
 // PUT /api/services/:serviceId/reject to reject a service
-router.put('/services/:serviceId/reject', /* isAdmin, */ async (req, res) => {
+router.put('/services/:serviceId/reject', /* isAdmin, */   async (req, res) => {
     const { serviceId } = req.params;
 
     if (!mongoose.Types.ObjectId.isValid(serviceId)) {
