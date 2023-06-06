@@ -7,7 +7,8 @@ const serviceSchema = new Schema(
     description: { type: String, required: [true, "Description is required."] },
     contactNumber: { type: String, required: [true, "Contact number is required."] },
     image: { type: String },
-    poster: { type: Schema.Types.ObjectId, ref: 'User', required: [true, "Poster is required."] },
+    email: { type: String },
+    role: { type: Schema.Types.ObjectId, ref: 'User', required: [true, "Poster is required."] },
     status: { type: String, enum: ['pending', 'approved', 'rejected'], default: 'pending' },
 
   },

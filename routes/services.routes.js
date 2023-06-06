@@ -12,11 +12,11 @@ const User = require('../models/User.model')
 // POST /api/services ROUTE that creates a new service
 
 router.post('/services', async (req, res) => {
-    const { title, description, contactNumber, image, poster} = req.body;
+    const { title, description, contactNumber, image, role} = req.body;
 
     try {
         // We will wait until we have the status of the creation of service to make the next step
-        let response = await Service.create({ title, description, contactNumber, image, poster});
+        let response = await Service.create({ title, description, contactNumber, image, role});
         // Send the response as json file, because we're making an API
         res.json(response);
     } catch (error) {
@@ -38,7 +38,7 @@ router.get('/services', async (req, res) => {
 // PUT /api/services/:servicesId to update info of a service
 router.put('/services/:serviceId', async (req, res) => {
     const { serviceId } = req.params;
-    const { title, description, contactNumber, poster } = req.body;
+    const { title, description, contactNumber, role } = req.body;
 
     if (!mongoose.Types.ObjectId.isValid(serviceId)) {
         res.status(400).json({ message: 'Specified Id is not valid' });
@@ -46,7 +46,7 @@ router.put('/services/:serviceId', async (req, res) => {
     }
 
     try {
-        let updatedService = await Service.findByIdAndUpdate(serviceId, {title, description, contactNumber, poster}, {new: true})
+        let updatedService = await Service.findByIdAndUpdate(serviceId, {title, description, contactNumber, role}, {new: true})
         res.json(updatedService);
     } catch (error) {
         res.json(error);

@@ -6,7 +6,7 @@ const newsSchema = new Schema(
         title: { type: String, required: [true, "Title is required."] },
         description: { type: String, required: [true, "Description is required."] },
         // image: { type: String },
-        poster: { type: Schema.Types.ObjectId, ref: 'User', required: [true, "Poster is required."] },
+        role: { type: Schema.Types.ObjectId, ref: 'User', required: [true, "Poster is required."] },
       
       },
     {
