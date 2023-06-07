@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 // ℹ️ Sets the MongoDB URI for our app to have access to it.
 // If no env has been set, we dynamically set it to whatever the folder name was upon the creation of the app
 
-const MONGO_URI = `mongodb+srv://jcarrilho11:n0faxJQoczISbuNM@principereal.eigfuvr.mongodb.net/?retryWrites=true&w=majority`
+const MONGO_URI = `mongodb+srv://jcarrilho11:69ZBJ77EAfLVvHJU@principereal.eigfuvr.mongodb.net/?retryWrites=true&w=majority`
 
 mongoose
   .connect(MONGO_URI)
