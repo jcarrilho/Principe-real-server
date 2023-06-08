@@ -51,6 +51,16 @@ router.get('/services', async (req, res) => {
     }
 })
 
+router.get('/services/:id', async (req, res) => {
+    const {id} = req.params;
+    try {
+        let service = await Service.findById(id);
+        res.json(service)
+    } catch (error) {
+        res.json(error)
+    }
+})
+
 
 // PUT /api/services/:servicesId to update info of a service
 router.put('/services/:serviceId', async (req, res) => {
