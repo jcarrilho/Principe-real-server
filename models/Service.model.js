@@ -7,7 +7,7 @@ const serviceSchema = new Schema(
     description: { type: String, required: [true, "Description is required."] },
     contactNumber: { type: String, required: [true, "Contact number is required."] },
     image: { type: String },
-    email: { type: String },
+    email: { type: String,  required: [true, "Contact number is required."] },
     role: { type: String },
     status: { type: String, enum: ['pending', 'approved', 'rejected'], default: 'pending' },
 
