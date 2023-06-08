@@ -65,7 +65,7 @@ router.get('/services/:id', async (req, res) => {
 // PUT /api/services/:servicesId to update info of a service
 router.put('/services/:serviceId', async (req, res) => {
     const { serviceId } = req.params;
-    const { title, description, contactNumber, email, role } = req.body;
+    const { title, description, contactNumber, image, email, role } = req.body;
 
     if (!mongoose.Types.ObjectId.isValid(serviceId)) {
         res.status(400).json({ message: 'Specified Id is not valid' });
@@ -73,7 +73,7 @@ router.put('/services/:serviceId', async (req, res) => {
     }
 
     try {
-        let updatedService = await Service.findByIdAndUpdate(serviceId, {title, description, contactNumber, email, role}, {new: true})
+        let updatedService = await Service.findByIdAndUpdate(serviceId, {title, description, image, contactNumber, email, role}, {new: true})
         res.json(updatedService);
     } catch (error) {
         res.json(error);
