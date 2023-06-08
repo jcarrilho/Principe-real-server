@@ -103,6 +103,7 @@ router.post("/login", (req, res, next) => {
         // Create an object that will be set as the token payload
         const payload = { _id, email, name, role };
 
+
         // Create a JSON Web Token and sign it
         const authToken = jwt.sign(payload, process.env.TOKEN_SECRET, {
           algorithm: "HS256",
@@ -126,6 +127,17 @@ router.get("/verify", isAuthenticated, (req, res, next) => {
 
   // Send back the token payload object containing the user data
   res.status(200).json(req.payload);
+});
+
+// GET /userprofile to get user profile
+router.get("/profile", isAuthenticated, async (req, res) => {
+  try {
+      const currentUser = req.payload._id;
+      const userProfile = await User.findById(currentUser);
+      res.json(userProfile);
+  } catch (error) {
+      res.status(500).json({ message: "Internal server error" });
+  }
 });
 
 module.exports = router;
