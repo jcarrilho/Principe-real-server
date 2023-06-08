@@ -29,11 +29,11 @@ router.post("/upload", fileUploader.single("image"), (req, res, next) => {
 // POST /api/services ROUTE that creates a new service
 
 router.post('/services',  async (req, res) => {
-    const { title, description, contactNumber, image, role} = req.body;
+    const { title, description, contactNumber, image, email, role} = req.body;
 
     try {
         // We will wait until we have the status of the creation of service to make the next step
-        let response = await Service.create({ title, description, contactNumber, image, role});
+        let response = await Service.create({ title, description, contactNumber, image, email, role});
         // Send the response as json file, because we're making an API
         res.json(response);
     } catch (error) {
