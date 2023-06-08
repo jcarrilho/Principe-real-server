@@ -28,7 +28,7 @@ router.post("/upload", fileUploader.single("image"), (req, res, next) => {
 
 // POST /api/services ROUTE that creates a new service
 
-router.post('/services', async (req, res) => {
+router.post('/services',  async (req, res) => {
     const { title, description, contactNumber, image, role} = req.body;
 
     try {
